@@ -24,8 +24,7 @@ services:
         fromService:
           type: web
           name: smart-pm-backend
-          property: hostport
-        transform: http://${hostport}
+          property: url
       - key: NODE_VERSION
         value: 20.11.0
     plan: free

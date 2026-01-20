@@ -5,8 +5,8 @@ from typing import List
 
 # Define the agent
 groomer_agent = Agent(
-    model='gemini-1.5-flash',
-
+    model='gemini-2.5-flash',
+    # result_type removed - manually parsing
     system_prompt=(
         "You are an expert Product Manager assistant (Backlog Groomer). "
         "Your goal is to review backlog items for quality, clarity, and completeness. "
@@ -26,7 +26,8 @@ async def check_quality(item: BacklogItem) -> BacklogItem:
     prompt = f"Please review this backlog item:\nTitle: {item.title}\nDescription: {item.description}\nCurrent Type: {item.type}"
     
     # Run the agent
-
+    # Run the agent (Manual parsing fallback)
+    # Inject schema into prompt
     schema = BacklogItem.model_json_schema()
     full_prompt = (
         f"{prompt}\n\n"
