@@ -9,6 +9,7 @@ services:
     envVars:
       - key: GEMINI_API_KEY
         sync: false
+    plan: free
     autoDeploy: false
 
   # Frontend Service
@@ -27,4 +28,5 @@ services:
         transform: http://${hostport}
       - key: NODE_VERSION
         value: 20.11.0
+    plan: free
     autoDeploy: false
