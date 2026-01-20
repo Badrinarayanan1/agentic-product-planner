@@ -5,7 +5,7 @@ import { FeedbackItem, FeedbackCluster, clusterFeedback, BacklogItem } from '@/l
 import { MessageSquare, RefreshCw, Layers, ThumbsUp, ThumbsDown, Minus, Upload, Loader2, Play, ArrowRight, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Clean Sentiment Bar
+
 const SentimentBar = ({ distribution }: { distribution: Record<string, number> }) => {
     const total = Object.values(distribution).reduce((a, b) => a + b, 0) || 1;
     const positive = (distribution.positive || 0) / total * 100;
@@ -55,7 +55,7 @@ export const FeedbackHub = () => {
 
     const handlePromoteToBacklog = (cluster: FeedbackCluster, idx: number) => {
         try {
-            // Create new backlog item
+
             const newItem: BacklogItem = {
                 id: `promoted-${Date.now()}-${idx}`,
                 title: cluster.theme,
@@ -66,17 +66,16 @@ export const FeedbackHub = () => {
                 quality_score: 80 // Default high score for user-validated features
             };
 
-            // Save to localStorage
+
             const existing = localStorage.getItem('smart-pm-backlog');
             const items = existing ? JSON.parse(existing) : [];
             items.push(newItem);
             localStorage.setItem('smart-pm-backlog', JSON.stringify(items));
 
-            // UI Feedback
+
             setPromotedIds(prev => new Set(prev).add(cluster.theme));
 
-            // Dispatch event for other components (if they were listening, but React state is isolated here)
-            // Ideally we'd use a real state manager, but for this demo localStorage + manual update is fine.
+
         } catch (e) {
             console.error("Failed to promote", e);
         }
@@ -84,7 +83,6 @@ export const FeedbackHub = () => {
 
     return (
         <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {/* Input Section */}
             <div className="space-y-4">
                 <div>
                     <h2 className="text-lg font-semibold tracking-tight mb-1">Raw User Feedback</h2>
@@ -114,7 +112,6 @@ export const FeedbackHub = () => {
                 </div>
             </div>
 
-            {/* Results Section */}
             <div className="space-y-4">
                 <div>
                     <h2 className="text-lg font-semibold tracking-tight mb-1">Identified Themes</h2>
@@ -169,14 +166,14 @@ export const FeedbackHub = () => {
                                             <SentimentBar distribution={cluster.sentiment_distribution} />
                                         )}
 
-                                        {/* Promote Button */}
+
                                         <div className="mt-4 pt-3 border-t flex justify-end">
                                             <button
                                                 onClick={() => handlePromoteToBacklog(cluster, idx)}
                                                 disabled={isPromoted}
                                                 className={`text-xs font-medium flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-colors ${isPromoted
-                                                        ? 'bg-green-100 text-green-700 cursor-default'
-                                                        : 'bg-primary text-primary-foreground hover:bg-primary/90'
+                                                    ? 'bg-green-100 text-green-700 cursor-default'
+                                                    : 'bg-primary text-primary-foreground hover:bg-primary/90'
                                                     }`}
                                             >
                                                 {isPromoted ? (
