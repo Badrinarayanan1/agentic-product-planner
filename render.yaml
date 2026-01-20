@@ -21,10 +21,7 @@ services:
     startCommand: cd frontend && npm start
     envVars:
       - key: BACKEND_URL
-        fromService:
-          type: web
-          name: smart-pm-backend
-          property: url
+        sync: false  # User must set this manually to the backend's public URL
       - key: NODE_VERSION
         value: 20.11.0
     plan: free
