@@ -19,12 +19,12 @@ services:
     buildCommand: cd frontend && npm install && npm run build
     startCommand: cd frontend && npm start
     envVars:
-      - key: NEXT_PUBLIC_API_URL
+      - key: BACKEND_URL
         fromService:
           type: web
           name: smart-pm-backend
-          property: url
-        transform: ${url}/api
+          property: hostport
+        transform: http://${hostport}
       - key: NODE_VERSION
         value: 20.11.0
     autoDeploy: false
