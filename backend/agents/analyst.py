@@ -4,7 +4,7 @@ from typing import List
 
 # Define the agent
 analyst_agent = Agent(
-    model='gemini-2.5-flash-preview-09-2025',
+    model='gemini-1.5-flash',
 
     system_prompt=(
         "You are an expert Product Manager/User Researcher (Feedback Analyst). "

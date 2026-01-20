@@ -9,7 +9,7 @@ class RoadmapPlan(BaseModel):
 
 # Define the agent
 strategist_agent = Agent(
-    model='gemini-2.5-flash-preview-09-2025',
+    model='gemini-2.5-flash',
     # result_type removed
     system_prompt=(
         "You are an expert Head of Product (Roadmap Strategist). "
