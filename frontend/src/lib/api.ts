@@ -1,5 +1,5 @@
 
-const API_BASE_URL = 'http://localhost:8000/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
 
 export interface BacklogItem {
     id: string;
@@ -23,6 +23,7 @@ export interface FeedbackCluster {
     theme: string;
     description: string;
     related_feedback_ids: string[];
+    sentiment_distribution?: Record<string, number>;
 }
 
 export interface RoadmapPlan {
