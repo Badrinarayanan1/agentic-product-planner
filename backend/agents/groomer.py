@@ -5,7 +5,7 @@ from typing import List
 
 # Define the agent
 groomer_agent = Agent(
-    model='gemini-2.5-flash',
+    model='gemini-1.5-flash',
     # result_type removed - manually parsing
     system_prompt=(
         "You are an expert Product Manager assistant (Backlog Groomer). "
